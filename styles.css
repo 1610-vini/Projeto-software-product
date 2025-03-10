@@ -1,0 +1,104 @@
+/* Estilo Global */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: hsl(180, 70%, 67%); /* Azul claro de fundo */
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal */
+.container {
+    width: 30%;
+    margin: 30px auto;
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 8px; /* Bordas arredondadas */
+    border: 2px solid hsl(0, 0%, 0%); /* Cor de borda mais grossa e agradável */
+}
+
+/* Títulos */
+h1 {
+    text-align: center;
+    font-size: 32px;
+    color: hsl(205, 72%, 41%); /* Cor verde-escuro para título */
+    font-weight: 700;
+}
+
+h2 {
+    text-align: center;
+    font-size: 28px;
+    color: hsl(205, 72%, 41%);
+    margin-top: 20px;
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels e inputs */
+label {
+    font-size: 16px;
+    color: hsl(210, 100%, 0%);
+    margin: 10px 0 5px;
+}
+
+input, select, button {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid hsl(0, 0%, 0%);
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+input:focus, select:focus, button:focus {
+    border-color: #000505; /* Mudança na borda ao focar */
+    box-shadow: 0 0 10px rgba(0, 121, 107, 0.3); /* Efeito de brilho no foco */
+}
+
+/* Botão */
+button {
+    background-color: hwb(158 13% 6%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #000301;
+    transition: background-color 0.3s ease;
+}
+
+/* Carrinho */
+#cart {
+    margin-top: 30px;
+}
+
+#cart ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#cart ul li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin: 5px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra nos itens do carrinho */
+}
+
+/* Total */
+#total {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: hsl(205, 72%, 41%);
+}
