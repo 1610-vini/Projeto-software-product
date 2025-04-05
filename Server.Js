@@ -7,27 +7,15 @@ const sequelize = require('./database');
 const { Cliente, Pacote, Servico } = require('./models');
 
 const app = express();
-const PORT = 3004; 
+const PORT = 3004; // Certifique-se de que a porta está correta
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 // Sincronizar o banco de dados
-sequelize.sync({ force: true }).then(() => { // Recria as tabelas no PostgreSQL
-  console.log('Banco de dados sincronizado e tabelas recriadas!');
-  // Inserir um cliente
-  Cliente.create({
-    nome: 'João Silva',
-    idade: 30,
-    cpf: '123.456.789-00',
-    email: 'joao@email.com',
-    telefone: '(11) 99999-9999',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }).then(() => {
-    console.log('Cliente inserido com sucesso!');
-  });
+sequelize.sync({ force: false }).then(() => { // Não recria as tabelas para evitar perda de dados
+  console.log('Banco de dados sincronizado!');
 });
 
 // Rotas para clientes
@@ -38,22 +26,28 @@ app.get('/clientes', async (req, res) => {
 
 app.post('/clientes', async (req, res) => {
   try {
-    const cliente = await Cliente.create(req.body);
-    res.status(201).json({
-      message: 'Cliente criado com sucesso',
-      cliente: {
-        id: cliente.id,
-        nome: cliente.nome,
-        idade: cliente.idade,
-        cpf: cliente.cpf,
-        email: cliente.email,
-        telefone: cliente.telefone,
-        createdAt: cliente.createdAt, // Inclui o campo createdAt
-        updatedAt: cliente.updatedAt, // Inclui o campo updatedAt
-      },
-    });
+    const { nome, email, senha, cpf, telefone } = req.body;
+
+    // Verificar se o email ou CPF já está em uso
+    const clienteExistente = await Cliente.findOne({ where: { email } });
+    if (clienteExistente) {
+      return res.status(400).json({ error: 'Email já está em uso' });
+    }
+
+    const cpfExistente = await Cliente.findOne({ where: { cpf } });
+    if (cpfExistente) {
+      return res.status(400).json({ error: 'CPF já está em uso' });
+    }
+
+    // Criptografar a senha
+    const senhaHash = await bcrypt.hash(senha, 10);
+
+    // Criar o cliente
+    const cliente = await Cliente.create({ nome, email, senha: senhaHash, cpf, telefone });
+    res.status(201).json({ message: 'Cliente cadastrado com sucesso', cliente });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Erro ao cadastrar cliente:', error);
+    res.status(500).json({ error: 'Erro ao cadastrar cliente' });
   }
 });
 
@@ -86,7 +80,22 @@ app.delete('/clientes/:id', async (req, res) => {
 // Endpoint para cadastro de clientes
 app.post('/auth/register', async (req, res) => {
   try {
-    const { nome, email, senha } = req.body;
+    const { nome, email, senha, cpf, telefone } = req.body;
+
+    // Verificar se todos os campos foram enviados
+    if (!nome || !email || !senha || !cpf || !telefone) {
+      return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
+    }
+
+    // Verificar se o CPF tem 11 dígitos
+    if (!/^\d{11}$/.test(cpf)) {
+      return res.status(400).json({ error: 'CPF inválido. Deve conter 11 dígitos.' });
+    }
+
+    // Verificar se o telefone está no formato internacional
+    if (!/^\d{13}$/.test(telefone)) {
+      return res.status(400).json({ error: 'Número de telefone inválido. Deve conter 13 dígitos no formato internacional.' });
+    }
 
     // Verificar se o email já está em uso
     const clienteExistente = await Cliente.findOne({ where: { email } });
@@ -94,13 +103,21 @@ app.post('/auth/register', async (req, res) => {
       return res.status(400).json({ error: 'Email já está em uso' });
     }
 
+    // Verificar se o CPF já está em uso
+    const cpfExistente = await Cliente.findOne({ where: { cpf } });
+    if (cpfExistente) {
+      return res.status(400).json({ error: 'CPF já está em uso' });
+    }
+
     // Criptografar a senha
     const senhaHash = await bcrypt.hash(senha, 10);
 
     // Criar o cliente
-    const cliente = await Cliente.create({ nome, email, senha: senhaHash });
-    res.status(201).json({ message: 'Cliente cadastrado com sucesso', cliente });
+    const cliente = await Cliente.create({ nome, email, senha: senhaHash, cpf, telefone });
+    console.log('Cliente cadastrado com sucesso:', cliente); // Log para depuração
+    res.status(201).json({ message: 'Cadastro realizado com sucesso!' });
   } catch (error) {
+    console.error('Erro ao cadastrar cliente:', error);
     res.status(500).json({ error: 'Erro ao cadastrar cliente' });
   }
 });
@@ -208,6 +225,24 @@ app.delete('/servicos/:id', async (req, res) => {
     res.json({ message: 'Serviço removido com sucesso' });
   } catch (error) {
     res.status(400).json({ error: error.message });
+  }
+});
+
+// Rota para agendar consulta
+app.post('/consultas', async (req, res) => {
+  try {
+    const { cpf, telefone } = req.body;
+
+    // Verificar se os dados foram recebidos corretamente
+    if (!cpf || !telefone) {
+      return res.status(400).json({ error: 'CPF e telefone são obrigatórios' });
+    }
+
+    console.log('Consulta agendada com sucesso:', { cpf, telefone }); // Log para depuração
+    res.status(201).json({ message: 'Agendamento realizado com sucesso!' });
+  } catch (error) {
+    console.error('Erro ao agendar consulta:', error);
+    res.status(500).json({ error: 'Erro ao agendar consulta' });
   }
 });
 
