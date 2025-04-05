@@ -106,6 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
     alert('Item removido do carrinho.');
   };
 
+  // Função para remover caracteres não numéricos de uma string
+  const formatarParaNumeros = valor => valor.replace(/\D/g, '');
+
   // Lógica para o formulário de cadastro
   const formCadastro = document.getElementById('form-cadastro');
   if (formCadastro) {
@@ -115,17 +118,23 @@ document.addEventListener('DOMContentLoaded', () => {
       const nome = document.getElementById('nome').value;
       const email = document.getElementById('email').value;
       const senha = document.getElementById('senha').value;
+      const cpf = formatarParaNumeros(document.getElementById('cpf').value); // CPF no formato padrão
+      const telefone = formatarParaNumeros(document.getElementById('numero').value); // Telefone no formato universal
+
+      console.log('Enviando dados para cadastro:', { nome, email, senha, cpf, telefone }); // Log para depuração
 
       try {
         const response = await fetch('http://localhost:3004/auth/register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ nome, email, senha }),
+          body: JSON.stringify({ nome, email, senha, cpf, telefone }),
         });
 
         const data = await response.json();
+        console.log('Resposta do backend (cadastro):', data); // Log para depuração
+
         if (response.ok) {
-          alert(data.message);
+          alert(data.message || 'Cadastro realizado com sucesso! Retornaremos em breve.');
           formCadastro.reset();
           fecharModal('modal-cadastro');
         } else {
@@ -138,11 +147,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Lógica para o formulário de agendamento
+  const formAgendar = document.getElementById('form-agendar');
+  if (formAgendar) {
+    formAgendar.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const cpf = formatarParaNumeros(document.getElementById('cpf-agendar').value); // CPF no formato padrão
+      const telefone = formatarParaNumeros(document.getElementById('telefone-agendar').value); // Telefone no formato universal
+
+      console.log('Enviando dados para agendamento:', { cpf, telefone }); // Log para depuração
+
+      try {
+        const response = await fetch('http://localhost:3004/consultas', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ cpf, telefone }),
+        });
+
+        const data = await response.json();
+        console.log('Resposta do backend (agendamento):', data); // Log para depuração
+
+        if (response.ok) {
+          alert(data.message || 'Agendamento realizado com sucesso! Retornaremos em breve.');
+          formAgendar.reset();
+          fecharModal('modal-agendar');
+        } else {
+          alert(data.error || 'Erro ao agendar consulta');
+        }
+      } catch (error) {
+        console.error('Erro ao agendar consulta:', error);
+        alert('Erro ao agendar consulta');
+      }
+    });
+  }
+
+  // Função para abrir o modal
+  window.abrirModal = function (modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'block';
+      document.body.classList.add('modal-open'); // Impede o scroll do fundo
+    }
+  };
+
   // Função para fechar o modal
   window.fecharModal = function (modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
       modal.style.display = 'none';
+      document.body.classList.remove('modal-open'); // Permite o scroll do fundo
     }
   };
 });
