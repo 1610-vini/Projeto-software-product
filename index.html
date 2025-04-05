@@ -28,9 +28,32 @@
         <div class="container">
             <h2>Beleza e Bem-estar em um só lugar</h2>
             <p>Agende agora seu procedimento estético e transforme sua autoestima!</p>
-            <button onclick="agendar()">Agendar Consulta</button>
+            <button onclick="abrirModal('modal-agendar')">Agendar Consulta</button>
         </div>
     </section>
+
+    <!-- Modal para Agendar Consulta -->
+    <div id="modal-agendar" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('modal-agendar')">&times;</span>
+            <h2>Agendar Consulta</h2>
+            <form id="form-agendar" class="form-elegante">
+                <label for="nome-agendar">Nome:</label>
+                <input type="text" id="nome-agendar" name="nome" placeholder="Digite seu nome completo" required>
+
+                <label for="email-agendar">Email:</label>
+                <input type="email" id="email-agendar" name="email" placeholder="Digite seu email" required>
+
+                <label for="cpf-agendar">CPF:</label>
+                <input type="text" id="cpf-agendar" name="cpf" maxlength="11" pattern="\d{11}" placeholder="Digite seu CPF (apenas números)" title="Digite apenas números com 11 caracteres" required>
+
+                <label for="telefone-agendar">Celular:</label>
+                <input type="tel" id="telefone-agendar" name="telefone" pattern="\(\d{2}\) \d{5}-\d{4}" placeholder="(00) 00000-0000" title="Formato esperado: (00) 00000-0000" required>
+
+                <button type="submit" class="btn-cadastro">Agendar</button>
+            </form>
+        </div>
+    </div>
     
     <section id="servicos" class="content">
         <div class="container">
@@ -192,7 +215,7 @@
                 <input type="text" id="cpf" name="cpf" maxlength="11" pattern="\d{11}" placeholder="Digite seu CPF (apenas números)" title="Digite apenas números com 11 caracteres" required>
 
                 <label for="numero">Número:</label>
-                <input type="tel" id="numero" name="numero" pattern="\(\d{2}\) \d{5}-\d{4}" placeholder="(00) 00000-0000" title="Formato esperado: (00) 00000-0000" required>
+                <input type="tel" id="numero" name="numero" maxlength="13" pattern="\d{13}" placeholder="Digite seu número no formato internacional (ex: 5511999999999)" title="Digite apenas números no formato internacional" required>
 
                 <button type="submit" class="btn-cadastro">Cadastrar</button>
             </form>
