@@ -526,7 +526,7 @@ h2 {
   text-align: center;
 }
 #estetica-facial, #carrinho, #contato {
-  background-color: #fff !important; 
+  background-color: #e6e5e5 !important; 
   padding: 50px 20px;
   text-align: center;
 }
@@ -547,23 +547,26 @@ h2 {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 1000; /* Garante que o modal fique acima de outros elementos */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semitransparente */
 }
+
 .modal-content {
   background-color: #fff;
-  margin: 15% auto;
+  margin: 10% auto; /* Centraliza o modal verticalmente */
   padding: 20px;
   border: 1px solid #888;
   width: 50%;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1010; /* Garante que o conteúdo do modal fique acima do fundo */
 }
+
 .close {
   color: #aaa;
   float: right;
@@ -571,6 +574,11 @@ h2 {
   font-weight: bold;
   cursor: pointer;
 }
+
 .close:hover {
   color: black;
+}
+
+body.modal-open {
+  overflow: hidden;
 }
