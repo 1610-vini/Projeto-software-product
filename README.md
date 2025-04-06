@@ -24,13 +24,17 @@ ________________________________________
 ________________________________________
 
 
-        📝 Próximos passos 
+        📝  In Progress (Em Andamento)
+
 
 ⚙️ Etapa 2 – Melhorias na Experiência do Usuário
 •	Implementar barra de pesquisa com sugestões automáticas
 •	Criar sistema de filtros avançados (marca, categoria, avaliações)
 •	Implementar carrinho persistente (mesmo após fechar o site)
 
+-----------------------------------------
+
+        📝  In Progress (Em Andamento)
 
 
 💳 Etapa 3 – Finalização e Integrações
