@@ -56,3 +56,9 @@ ________________________________________
 •	Criação do layout da página e interação com o usuário
 •	Configurações do repositório no GitHub
 •	Testes iniciais realizados
+
+🚀 Etapa 2 – Backend
+•	Implementar sistema de login e cadastro de usuários
+•	Implementar botão "Adicionar ao Carrinho" com exibição dinâmica do total
+•	Criar, listar, atualizar e excluir pacotes e serviços. 
+ 
