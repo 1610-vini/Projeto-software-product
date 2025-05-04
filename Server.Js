@@ -1,27 +1,36 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
-
-const sequelize = require('./database');
-const { Cliente, Pacote, Servico } = require('./models');
+const sequelize = require('./database'); // Caminho corrigido
+const { Cliente, Pacote, Servico } = require('../models');
 
 const app = express();
 const PORT = 3004; // Certifique-se de que a porta está correta
 
 // Middleware
-app.use(bodyParser.json());
-app.use(cors());
+app.use(express.json());
+app.use(cors({
+  origin: ['http://localhost:5500', 'http://127.0.0.1:5500'], // Permitir múltiplas origens
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
+}));
 
 // Sincronizar o banco de dados
-sequelize.sync({ force: false }).then(() => { // Não recria as tabelas para evitar perda de dados
-  console.log('Banco de dados sincronizado!');
+sequelize.sync({ force: false }).then(() => {
+  console.log('Banco de dados sincronizado com PostgreSQL!');
+}).catch((error) => {
+  console.error('Erro ao sincronizar o banco de dados:', error);
 });
 
 // Rotas para clientes
 app.get('/clientes', async (req, res) => {
-  const clientes = await Cliente.findAll();
-  res.json(clientes);
+  try {
+    const clientes = await Cliente.findAll();
+    res.json(clientes);
+  } catch (error) {
+    console.error('Erro ao buscar clientes:', error);
+    res.status(500).json({ error: 'Erro ao buscar clientes' });
+  }
 });
 
 app.post('/clientes', async (req, res) => {
@@ -51,36 +60,13 @@ app.post('/clientes', async (req, res) => {
   }
 });
 
-app.put('/clientes/:id', async (req, res) => {
-  try {
-    const cliente = await Cliente.findByPk(req.params.id);
-    if (!cliente) {
-      return res.status(404).json({ error: 'Cliente não encontrado' });
-    }
-    await cliente.update(req.body);
-    res.json({ message: 'Cliente atualizado com sucesso', cliente });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
-
-app.delete('/clientes/:id', async (req, res) => {
-  try {
-    const cliente = await Cliente.findByPk(req.params.id);
-    if (!cliente) {
-      return res.status(404).json({ error: 'Cliente não encontrado' });
-    }
-    await cliente.destroy();
-    res.json({ message: 'Cliente removido com sucesso' });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
-
 // Endpoint para cadastro de clientes
 app.post('/auth/register', async (req, res) => {
   try {
     const { nome, email, senha, cpf, telefone } = req.body;
+
+    
+    console.log('Recebendo dados para cadastro:', { nome, email, senha, cpf, telefone });
 
     // Verificar se todos os campos foram enviados
     if (!nome || !email || !senha || !cpf || !telefone) {
@@ -114,7 +100,7 @@ app.post('/auth/register', async (req, res) => {
 
     // Criar o cliente
     const cliente = await Cliente.create({ nome, email, senha: senhaHash, cpf, telefone });
-    console.log('Cliente cadastrado com sucesso:', cliente); // Log para depuração
+    console.log('Cliente cadastrado com sucesso:', cliente);
     res.status(201).json({ message: 'Cadastro realizado com sucesso!' });
   } catch (error) {
     console.error('Erro ao cadastrar cliente:', error);
@@ -142,14 +128,20 @@ app.post('/auth/login', async (req, res) => {
     // Retornar uma mensagem de sucesso (simulação de token)
     res.status(200).json({ message: 'Login realizado com sucesso', clienteId: cliente.id });
   } catch (error) {
+    console.error('Erro ao realizar login:', error);
     res.status(500).json({ error: 'Erro ao realizar login' });
   }
 });
 
 // Rotas para pacotes
 app.get('/pacotes', async (req, res) => {
-  const pacotes = await Pacote.findAll();
-  res.json(pacotes);
+  try {
+    const pacotes = await Pacote.findAll();
+    res.json(pacotes);
+  } catch (error) {
+    console.error('Erro ao buscar pacotes:', error);
+    res.status(500).json({ error: 'Erro ao buscar pacotes' });
+  }
 });
 
 app.post('/pacotes', async (req, res) => {
@@ -157,7 +149,8 @@ app.post('/pacotes', async (req, res) => {
     const pacote = await Pacote.create(req.body);
     res.status(201).json({ message: 'Pacote criado com sucesso', pacote });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Erro ao criar pacote:', error);
+    res.status(500).json({ error: 'Erro ao criar pacote' });
   }
 });
 
@@ -170,7 +163,8 @@ app.put('/pacotes/:id', async (req, res) => {
     await pacote.update(req.body);
     res.json({ message: 'Pacote atualizado com sucesso', pacote });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Erro ao atualizar pacote:', error);
+    res.status(500).json({ error: 'Erro ao atualizar pacote' });
   }
 });
 
@@ -183,14 +177,20 @@ app.delete('/pacotes/:id', async (req, res) => {
     await pacote.destroy();
     res.json({ message: 'Pacote removido com sucesso' });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Erro ao remover pacote:', error);
+    res.status(500).json({ error: 'Erro ao remover pacote' });
   }
 });
 
 // Rotas para serviços
 app.get('/servicos', async (req, res) => {
-  const servicos = await Servico.findAll();
-  res.json(servicos);
+  try {
+    const servicos = await Servico.findAll();
+    res.json(servicos);
+  } catch (error) {
+    console.error('Erro ao buscar serviços:', error);
+    res.status(500).json({ error: 'Erro ao buscar serviços' });
+  }
 });
 
 app.post('/servicos', async (req, res) => {
@@ -198,7 +198,8 @@ app.post('/servicos', async (req, res) => {
     const servico = await Servico.create(req.body);
     res.status(201).json({ message: 'Serviço criado com sucesso', servico });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Erro ao criar serviço:', error);
+    res.status(500).json({ error: 'Erro ao criar serviço' });
   }
 });
 
@@ -211,7 +212,8 @@ app.put('/servicos/:id', async (req, res) => {
     await servico.update(req.body);
     res.json({ message: 'Serviço atualizado com sucesso', servico });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Erro ao atualizar serviço:', error);
+    res.status(500).json({ error: 'Erro ao atualizar serviço' });
   }
 });
 
@@ -224,21 +226,34 @@ app.delete('/servicos/:id', async (req, res) => {
     await servico.destroy();
     res.json({ message: 'Serviço removido com sucesso' });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Erro ao remover serviço:', error);
+    res.status(500).json({ error: 'Erro ao remover serviço' });
   }
 });
 
-// Rota para agendar consulta
+// Endpoint para agendar consulta
 app.post('/consultas', async (req, res) => {
   try {
     const { cpf, telefone } = req.body;
+
+    console.log('Recebendo dados para agendamento:', { cpf, telefone });
 
     // Verificar se os dados foram recebidos corretamente
     if (!cpf || !telefone) {
       return res.status(400).json({ error: 'CPF e telefone são obrigatórios' });
     }
 
-    console.log('Consulta agendada com sucesso:', { cpf, telefone }); // Log para depuração
+    // Verificar se o CPF tem 11 dígitos
+    if (!/^\d{11}$/.test(cpf)) {
+      return res.status(400).json({ error: 'CPF inválido. Deve conter 11 dígitos.' });
+    }
+
+    // Verificar se o telefone está no formato internacional
+    if (!/^\d{13}$/.test(telefone)) {
+      return res.status(400).json({ error: 'Número de telefone inválido. Deve conter 13 dígitos no formato internacional.' });
+    }
+
+    console.log('Consulta agendada com sucesso:', { cpf, telefone });
     res.status(201).json({ message: 'Agendamento realizado com sucesso!' });
   } catch (error) {
     console.error('Erro ao agendar consulta:', error);
