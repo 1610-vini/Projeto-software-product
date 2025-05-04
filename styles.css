@@ -1,584 +1,584 @@
 /* Reset Geral */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-body {
-  background-color: #f4f4f4;
-  color: #333;
-}
-
-/* Header */
-header {
-  background: #f4f2f2;
-  color: black; 
-  padding: 20px 0;
-  text-align: center;
-}
-.logo-container {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 10px;
-  left: 20px;
-}
-.logo {
-  width: 70px; 
-  height: 70px;
-  margin-right: 15px;
-}
-header h1 {
-  font-size: 2rem; 
-  font-family: Arial, sans-serif; 
-  color: black; 
-  margin: 0;
-  line-height: 70px; 
-}
-.header-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; 
-  gap: 20px; 
-  position: relative;
-  margin-right: 20px; 
-  margin-top: 20px; 
-}
-
-/* Botões Gerais */
-button {
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-button:hover {
-  transform: scale(1.05);
-}
-
-/* Botões Específicos */
-.btn-acesso, .btn-cadastro { /* Botões de Acesso e Cadastro */
-  background: #FF5733;
-  color: white;
-  padding: 15px 25px;
-  font-size: 1rem;
-}
-.btn-acesso:hover, .btn-cadastro:hover {
-  background: #e04e2d;
-}
-.btn-login { /*  Botão de Login */
-  background: #FF5733; 
-  color: white;
-  border: 2px solid black; 
-  padding: 15px 25px; 
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem; 
-  transition: background-color 0.3s ease, transform 0.2s ease; 
-}
-.btn-login:hover {
-  background: #e04e2d; 
-  transform: scale(1.05); /
-}
-
-.btn-whatsapp { /*Whatsapp Button*/
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px; 
-  height: 50px;
-  background-color: #25D366;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.btn-whatsapp:hover {
-  transform: scale(1.1);
-}
-
-.whatsapp-logo {
-  width: 25px; 
-  height: 25px;
-}
-
-/* Hero Section */
-.hero {
-  background: url('assets/hero-bg.jpg') center/cover no-repeat fixed; 
-  text-align: center;
-  color: white;
-  padding: 100px 20px;
-  position: relative;
-  z-index: 1;
-}
-
-.hero h2 {
-  font-size: 2.5rem; 
-  text-shadow: 1px 1px 2px black; 
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.hero p {
-  font-size: 1.5rem; 
-  margin-bottom: 30px;
-}
-
-.hero button {
-  background: #FF5733;
-  color: white;
-  border: 2px solid black; 
-  padding: 20px 40px; 
-  font-size: 1.5rem; 
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease; 
-}
-
-.hero button:hover {
-  background: #e04e2d; 
-  transform: scale(1.05); 
-}
-
-/* Serviços */
-#servicos {
-  background: url('assets/hero-bg.jpg') center/cover no-repeat fixed; 
-  color: white; 
-  padding: 50px 20px;
-  position: relative;
-  z-index: 1;
-}
-
-.servicos-grid {
-  display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-/* Cards de Serviços */
-.servico-card {
-  background-color: rgba(255, 255, 255, 0.8); /* Adiciona um fundo branco semitransparente para destacar o conteúdo */
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.servico-title {
-  font-weight: bold;
-  font-size: 1.5rem; 
-  color: #333; 
-  margin-bottom: 15px; 
-}
-
-.servico-card img {
-  max-width: 100%;
-  height: auto;
-  max-height: 300px; 
-  display: block;
-  margin: 0 auto; 
-  transition: transform 0.3s ease;
-}
-
-.servico-card img:hover {
-  transform: scale(1.05); 
-}
-
-.servico-description {
-  font-size: 1.2rem; 
-  margin-top: 20px; 
-  color: #333; 
-}
-
-/* Formulários */
-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  margin: auto;
-}
-
-form label {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-form input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo para o formulário de cadastro */
-.form-elegante {
-  background-color: #f9f9f9; 
-  border: 2px solid #007BFF; 
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-  max-width: 400px;
-  margin: 0 auto; 
-}
-
-/* Ajuste de altura para os campos */
-.form-elegante input {
-  height: 50px;
-}
-
-/* Depilação */
-#depilacao, #estetica-facial, #rejuvenescimento {
-  padding: 50px 20px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  text-align: center;
-  margin-bottom: 20px; 
-}
-
-#depilacao .container, #estetica-facial .container, #rejuvenescimento .container {
-  background-color: transparent; 
-  border: none; 
-  box-shadow: none; 
-  padding: 0; 
-  margin: 0; 
-}
-
-/* Títulos */
-h2 {
-  font-size: 2.5rem;
-  color: #ffffff; 
-  margin-bottom: 20px;
-  font-weight: bold;
-  text-align: center;
-}
-
-#depilacao ul, #estetica-facial ul, #rejuvenescimento ul {
-  list-style: none; 
-  padding: 0;
-  margin: 0;
-}
-
-#depilacao li, #estetica-facial li, #rejuvenescimento li {
-  font-size: 1.2rem;
-  color: #333; 
-  margin: 10px 0; 
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  gap: 15px; 
-  text-align: center; 
-}
-
-#depilacao li:last-child, #estetica-facial li:last-child, #rejuvenescimento li:last-child {
-  border-bottom: none;
-}
-
-#depilacao button, #estetica-facial button, #rejuvenescimento button {
-  background-color: #29cf3c; 
-  color: white;
-  border: none;
-  padding: 8px 15px; 
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-#depilacao button:hover, #estetica-facial button:hover, #rejuvenescimento button:hover {
-  background-color: #0056b3; 
-  transform: scale(1.05); 
-}
-
-.depilacao-list {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-
-.depilacao-list li, .estetica-list li, .rejuvenescimento-list li {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #333; 
-}
-
-.depilacao-list button, .estetica-list button, .rejuvenescimento-list button {
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-left: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-.depilacao-list button:hover, .estetica-list button:hover, .rejuvenescimento-list button:hover {
-  background-color: #0056b3; 
-  transform: scale(1.05); 
-}
-
-/* Estética Facial */
-.estetica-list {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-.estetica-list li {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #333;
-}
-.estetica-list button {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-left: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-.estetica-list button:hover {
-  background-color: #218838;
-  transform: scale(1.05); 
-}
-
-/* Rejuvenescimento */
-.rejuvenescimento-list {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-.rejuvenescimento-list li {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #333;
-}
-.rejuvenescimento-list button {
-  background-color: #6f42c1;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-left: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-.rejuvenescimento-list button:hover {
-  background-color: #5a379e;
-  transform: scale(1.05);
-}
-
-/* Sobre a Thays Laser */
-.sobre-title {
-  text-align: center;
-  font-size: 2.5rem; 
-  font-weight: bold;
-  font-family: Arial, sans-serif; 
-  color: #000; 
-  margin-bottom: 30px;
-}
-.sobre-text {
-  font-size: 1.5rem; 
-  line-height: 1.8; 
-  color: #333;
-  text-align: center; 
-  margin: 0 auto 20px; 
-  max-width: 900px; 
-  padding: 0 30px; 
-}
-#sobre .container {
-  background-color: #fff; 
-  border: 1px solid #000; 
-  border-radius: 10px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  padding: 30px;
-  max-width: 800px;
-  margin: 0 auto; 
-}
-#sobre p {
-  font-size: 1.2rem;
-  color: #333; 
-  line-height: 1.8; 
-  text-align: justify; 
-  margin-bottom: 15px;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); 
-}
-
-/* Contato */
-#contato {
-  background-color: #f9f9f9; 
-  padding: 50px 20px;
-  text-align: center;
-}
-#contato .container {
-  background-color: #fff; 
-  border-radius: 10px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  padding: 30px;
-  max-width: 600px;
-  margin: 0 auto; 
-}
-#contato form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; 
-}
-#contato form label {
-  font-size: 1.2rem;
-  color: #333; 
-  text-align: left;
-}
-#contato form input,
-#contato form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); 
-}
-#contato form button {
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  padding: 15px;
-  font-size: 1.2rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-#contato form button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05); 
-}
-#contato p {
-  font-size: 1.2rem;
-  color: #333; 
-  margin-top: 20px;
-}
-
-/* Carrinho */
-#carrinho {
-  margin: 20px auto;
-  padding: 20px;
-  border: 2px solid #007BFF;
-  border-radius: 10px;
-  background-color: #aeb2b4; 
-  max-width: 600px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
-}
-#carrinho:hover {
-  transform: scale(1.02); 
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
-}
-#carrinho h2 {
-  font-size: 2.5rem; 
-  margin-bottom: 20px;
-  text-align: center;
-  color: #007BFF; 
-  font-weight: bold;
-}
-.carrinho-lista {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.carrinho-lista li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.2rem;
-  padding: 10px;
-  border-bottom: 1px solid #f7f7f7;
-}
-.carrinho-item-numero {
-  font-weight: bold;
-  color: #007BFF;
-  margin-right: 10px;
-}
-.carrinho-item-nome {
-  flex: 1;
-  text-align: left;
-}
-.carrinho-item-preco {
-  font-weight: bold;
-  color: #333;
-}
-.carrinho-total {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  color: #007BFF;
-  margin-top: 10px;
-}
-#depilacao, #rejuvenescimento, #sobre {
-  background-color: #fff !important; 
-  padding: 50px 20px;
-  text-align: center;
-}
-#estetica-facial, #carrinho, #contato {
-  background-color: #e6e5e5 !important; 
-  padding: 50px 20px;
-  text-align: center;
-}
-#depilacao h2, #rejuvenescimento h2, #sobre h2,
-#estetica-facial h2, #carrinho h2, #contato h2 {
-  color: #333; /* Texto escuro */
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-#sobre p, #contato p, #depilacao p, #estetica-facial p, #rejuvenescimento p {
-  color: #333; 
-}
-#sobre h2, #sobre p, #contato p, #depilacao p, #estetica-facial p, #rejuvenescimento p {
-  color: #000; 
-}
-
-/* Modais */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000; /* Garante que o modal fique acima de outros elementos */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semitransparente */
-}
-
-.modal-content {
-  background-color: #fff;
-  margin: 10% auto; /* Centraliza o modal verticalmente */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 50%;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1010; /* Garante que o conteúdo do modal fique acima do fundo */
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover {
-  color: black;
-}
-
-body.modal-open {
-  overflow: hidden;
-}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  /* Header */
+  header {
+    background: #f4f2f2;
+    color: black; 
+    padding: 20px 0;
+    text-align: center;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+  }
+  .logo {
+    width: 70px; 
+    height: 70px;
+    margin-right: 15px;
+  }
+  header h1 {
+    font-size: 2rem; 
+    font-family: Arial, sans-serif; 
+    color: black; 
+    margin: 0;
+    line-height: 70px; 
+  }
+  .header-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    gap: 20px; 
+    position: relative;
+    margin-right: 20px; 
+    margin-top: 20px; 
+  }
+  
+  /* Botões Gerais */
+  button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Botões Específicos */
+  .btn-acesso, .btn-cadastro { /* Botões de Acesso e Cadastro */
+    background: #FF5733;
+    color: white;
+    padding: 15px 25px;
+    font-size: 1rem;
+  }
+  .btn-acesso:hover, .btn-cadastro:hover {
+    background: #e04e2d;
+  }
+  .btn-login { /*  Botão de Login */
+    background: #FF5733; 
+    color: white;
+    border: 2px solid black; 
+    padding: 15px 25px; 
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem; 
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+  }
+  .btn-login:hover {
+    background: #e04e2d; 
+    transform: scale(1.05); /
+  }
+  
+  .btn-whatsapp { /*Whatsapp Button*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; 
+    height: 50px;
+    background-color: #25D366;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-whatsapp:hover {
+    transform: scale(1.1);
+  }
+  
+  .whatsapp-logo {
+    width: 25px; 
+    height: 25px;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: url('assets/hero-bg.jpg') center/cover no-repeat fixed; 
+    text-align: center;
+    color: white;
+    padding: 100px 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem; 
+    text-shadow: 1px 1px 2px black; 
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .hero p {
+    font-size: 1.5rem; 
+    margin-bottom: 30px;
+  }
+  
+  .hero button {
+    background: #FF5733;
+    color: white;
+    border: 2px solid black; 
+    padding: 20px 40px; 
+    font-size: 1.5rem; 
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+  }
+  
+  .hero button:hover {
+    background: #e04e2d; 
+    transform: scale(1.05); 
+  }
+  
+  /* Serviços */
+  #servicos {
+    background: url('assets/hero-bg.jpg') center/cover no-repeat fixed; 
+    color: white; 
+    padding: 50px 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .servicos-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Cards de Serviços */
+  .servico-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Adiciona um fundo branco semitransparente para destacar o conteúdo */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .servico-title {
+    font-weight: bold;
+    font-size: 1.5rem; 
+    color: #333; 
+    margin-bottom: 15px; 
+  }
+  
+  .servico-card img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; 
+    display: block;
+    margin: 0 auto; 
+    transition: transform 0.3s ease;
+  }
+  
+  .servico-card img:hover {
+    transform: scale(1.05); 
+  }
+  
+  .servico-description {
+    font-size: 1.2rem; 
+    margin-top: 20px; 
+    color: #333; 
+  }
+  
+  /* Formulários */
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  form label {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para o formulário de cadastro */
+  .form-elegante {
+    background-color: #f9f9f9; 
+    border: 2px solid #007BFF; 
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    max-width: 400px;
+    margin: 0 auto; 
+  }
+  
+  /* Ajuste de altura para os campos */
+  .form-elegante input {
+    height: 50px;
+  }
+  
+  /* Depilação */
+  #depilacao, #estetica-facial, #rejuvenescimento {
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+    margin-bottom: 20px; 
+  }
+  
+  #depilacao .container, #estetica-facial .container, #rejuvenescimento .container {
+    background-color: transparent; 
+    border: none; 
+    box-shadow: none; 
+    padding: 0; 
+    margin: 0; 
+  }
+  
+  /* Títulos */
+  h2 {
+    font-size: 2.5rem;
+    color: #ffffff; 
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  #depilacao ul, #estetica-facial ul, #rejuvenescimento ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+  }
+  
+  #depilacao li, #estetica-facial li, #rejuvenescimento li {
+    font-size: 1.2rem;
+    color: #333; 
+    margin: 10px 0; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    gap: 15px; 
+    text-align: center; 
+  }
+  
+  #depilacao li:last-child, #estetica-facial li:last-child, #rejuvenescimento li:last-child {
+    border-bottom: none;
+  }
+  
+  #depilacao button, #estetica-facial button, #rejuvenescimento button {
+    background-color: #29cf3c; 
+    color: white;
+    border: none;
+    padding: 8px 15px; 
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  #depilacao button:hover, #estetica-facial button:hover, #rejuvenescimento button:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05); 
+  }
+  
+  .depilacao-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .depilacao-list li, .estetica-list li, .rejuvenescimento-list li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333; 
+  }
+  
+  .depilacao-list button, .estetica-list button, .rejuvenescimento-list button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  .depilacao-list button:hover, .estetica-list button:hover, .rejuvenescimento-list button:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05); 
+  }
+  
+  /* Estética Facial */
+  .estetica-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  .estetica-list li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333;
+  }
+  .estetica-list button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  .estetica-list button:hover {
+    background-color: #218838;
+    transform: scale(1.05); 
+  }
+  
+  /* Rejuvenescimento */
+  .rejuvenescimento-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  .rejuvenescimento-list li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333;
+  }
+  .rejuvenescimento-list button {
+    background-color: #6f42c1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  .rejuvenescimento-list button:hover {
+    background-color: #5a379e;
+    transform: scale(1.05);
+  }
+  
+  /* Sobre a Thays Laser */
+  .sobre-title {
+    text-align: center;
+    font-size: 2.5rem; 
+    font-weight: bold;
+    font-family: Arial, sans-serif; 
+    color: #000; 
+    margin-bottom: 30px;
+  }
+  .sobre-text {
+    font-size: 1.5rem; 
+    line-height: 1.8; 
+    color: #333;
+    text-align: center; 
+    margin: 0 auto 20px; 
+    max-width: 900px; 
+    padding: 0 30px; 
+  }
+  #sobre .container {
+    background-color: #fff; 
+    border: 1px solid #000; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto; 
+  }
+  #sobre p {
+    font-size: 1.2rem;
+    color: #333; 
+    line-height: 1.8; 
+    text-align: justify; 
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); 
+  }
+  
+  /* Contato */
+  #contato {
+    background-color: #f9f9f9; 
+    padding: 50px 20px;
+    text-align: center;
+  }
+  #contato .container {
+    background-color: #fff; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto; 
+  }
+  #contato form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+  }
+  #contato form label {
+    font-size: 1.2rem;
+    color: #333; 
+    text-align: left;
+  }
+  #contato form input,
+  #contato form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); 
+  }
+  #contato form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  #contato form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); 
+  }
+  #contato p {
+    font-size: 1.2rem;
+    color: #333; 
+    margin-top: 20px;
+  }
+  
+  /* Carrinho */
+  #carrinho {
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #007BFF;
+    border-radius: 10px;
+    background-color: #aeb2b4; 
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  }
+  #carrinho:hover {
+    transform: scale(1.02); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+  }
+  #carrinho h2 {
+    font-size: 2.5rem; 
+    margin-bottom: 20px;
+    text-align: center;
+    color: #007BFF; 
+    font-weight: bold;
+  }
+  .carrinho-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .carrinho-lista li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-bottom: 1px solid #f7f7f7;
+  }
+  .carrinho-item-numero {
+    font-weight: bold;
+    color: #007BFF;
+    margin-right: 10px;
+  }
+  .carrinho-item-nome {
+    flex: 1;
+    text-align: left;
+  }
+  .carrinho-item-preco {
+    font-weight: bold;
+    color: #333;
+  }
+  .carrinho-total {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #007BFF;
+    margin-top: 10px;
+  }
+  #depilacao, #rejuvenescimento, #sobre {
+    background-color: #fff !important; 
+    padding: 50px 20px;
+    text-align: center;
+  }
+  #estetica-facial, #carrinho, #contato {
+    background-color: #e6e5e5 !important; 
+    padding: 50px 20px;
+    text-align: center;
+  }
+  #depilacao h2, #rejuvenescimento h2, #sobre h2,
+  #estetica-facial h2, #carrinho h2, #contato h2 {
+    color: #333; /* Texto escuro */
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  #sobre p, #contato p, #depilacao p, #estetica-facial p, #rejuvenescimento p {
+    color: #333; 
+  }
+  #sobre h2, #sobre p, #contato p, #depilacao p, #estetica-facial p, #rejuvenescimento p {
+    color: #000; 
+  }
+  
+  /* Modais */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000; /* Garante que o modal fique acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semitransparente */
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto; /* Centraliza o modal verticalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1010; /* Garante que o conteúdo do modal fique acima do fundo */
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: black;
+  }
+  
+  body.modal-open {
+    overflow: hidden;
+  }
