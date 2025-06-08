@@ -12,7 +12,7 @@ Estas são algumas funcionalidades que poderão ser adicionadas no futuro:
 
 ________________________________________
 
-       📝 In Progress (Em Andamento)
+       📝 In Progress (concluido)
 
 🚀 Etapa 1 – Funcionalidades
 •	Criação da barra de pesquisa com mais funcionalidades de buscas
@@ -24,7 +24,7 @@ ________________________________________
 ________________________________________
 
 
-        📝  In Progress (Em Andamento)
+        📝  In Progress (concluido)
 
 
 ⚙️ Etapa 2 – Melhorias na Experiência do Usuário
@@ -34,7 +34,7 @@ ________________________________________
 
 -----------------------------------------
 
-        📝  In Progress (Em Andamento)
+        📝  In Progress (concluido)
 
 
 💳 Etapa 3 – Finalização e Integrações
@@ -42,6 +42,7 @@ ________________________________________
 •	Criar área do cliente com histórico de pedidos e status de entrega
 •	Criar meio de contato automático usando IA para sinalizar vendas realizadas ou contatos realizados fora do horário comercial.
 
+        📝  In Progress (concluido)
 
 🎯 Etapa 4 – Entrega Final
 •	Revisão geral e testes de usabilidade
@@ -49,16 +50,3 @@ ________________________________________
 •	Implementação de segurança para proteção de dados
 
 ________________________________________
-
-
- 	Done (Realizado até o momento)
-🚀 Etapa 1 – Front End 
-•	Criação do layout da página e interação com o usuário
-•	Configurações do repositório no GitHub
-•	Testes iniciais realizados
-
-🚀 Etapa 2 – Backend
-•	Implementar sistema de login e cadastro de usuários
-•	Implementar botão "Adicionar ao Carrinho" com exibição dinâmica do total
-•	Criar, listar, atualizar e excluir pacotes e serviços. 
- 
